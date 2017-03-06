@@ -37,7 +37,7 @@ function softCrop (req, res) {
 function downloadImage (path) {
   if (!fs.existsSync('tmp/')) fs.mkdirSync('tmp/')
 
-  let url = `${process.env.CROPS_BASE_SERVER}/${path}`
+  let url = `${process.env.BASE_SERVER}/${path}`
   return new Promise((resolve, reject) => {
     get(url, {encoding: 'binary'}, (err, response) => {
       if (err || response.statusCode !== 200) return reject(err)

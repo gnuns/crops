@@ -6,7 +6,7 @@ const crops = require('./crops')
 start()
 
 function start () {
-  let port = process.env.CROPS_PORT || 8080
+  let port = process.env.PORT || 8080
 
   express
   .get('/crop/:w/:h/*', crops.softCrop)
