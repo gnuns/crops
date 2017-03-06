@@ -1,0 +1,25 @@
+{
+  "name": "crops",
+  "version": "1.0.0",
+  "description": "image cronp and resize server",
+  "main": "crops.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gnuns/crops.git"
+  },
+  "author": "Gabriel Nunes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gnuns/crops/issues"
+  },
+  "homepage": "https://github.com/gnuns/crops#readme",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "express": "^4.15.0",
+    "gm": "^1.23.0",
+    "request": "^2.80.0"
+  }
+}
