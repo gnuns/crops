@@ -9,9 +9,7 @@ function start () {
   let port = process.env.CROPS_PORT || 8080
 
   express
-  .get('/crop/:w/:h/*', crops.crop)
-  .get('/rcrop/:w/:h/*', crops.resizeAndCrop)
-  .get('/resize', crops.resize)
+  .get('/crop/:w/:h/*', crops.softCrop)
 
   express.listen(port, () => console.log(`Crops listening on port ${port}`))
 }
