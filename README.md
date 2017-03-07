@@ -1,18 +1,21 @@
 # crops
 Simple image crop and resize server
 
-## Config
+### Config
 .env variables:
 ```
 PORT=1337
 BASE_SERVER=http://s3.amazonaws.com/
 ```
-## Install dependencies
+### Clone & install dependencies
 ```sh
 sudo apt-get install imagemagick graphicsmagick
+git clone git@github.com:gnuns/crops.git
+cd crops/
+npm install
 ```
 
-## Run!
+### Run!
 ```
 npm start
 ```
