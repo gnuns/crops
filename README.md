@@ -61,4 +61,4 @@ Address: `https://crops.herokuapp.com/crop/`
 `Image 300x300: https://crops.herokuapp.com/crop/300/300/68.media.tumblr.com/4e097c1aba3644c09121b28c3fc2d468/tumblr_mgtkitzs2I1qlp8dho1_1280.jpg`
 
 ## credits
-based on [zooniverse/static-crop](https://github.com/zooniverse/static-crop)
+inspired by [zooniverse/static-crop](https://github.com/zooniverse/static-crop)
