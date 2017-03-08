@@ -29,7 +29,7 @@ You just have to access
 
 
 You can also set the crop gravity:
-`http://localhost:1337/crop/200/400/blah/awsome/potatoe.jpg?gravity=north`
+`http://localhost:1337/crop/200/400/blah/awsome/potatoe.jpg?gravity=North`
 
 
 #### Valid gravity values:
