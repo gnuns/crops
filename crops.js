@@ -6,13 +6,28 @@ const fs = require('fs')
 const MAX_CROP_WIDTH = 2000
 const MAX_CROP_HEIGHT = 2000
 
+const gravityMap = {
+  0: 'Center',
+  1: 'NorthWest',
+  2: 'North',
+  3: 'NorthEast',
+  4: 'West',
+  5: 'East',
+  6: 'SouthWest',
+  7: 'South',
+  8: 'SouthEast'
+}
+
 module.exports = { softCrop }
 
 function softCrop (req, res) {
-  let params = req.params
-
   res.set('X-Powered-By', 'Crops')
 
+  let params = req.params
+  let gravity = req.query.gravity || 'Center'
+
+  // int gravity to the matching string value
+  if (!isNaN(parseInt(gravity))) gravity = gravityMap[gravity]
   if (params.w > MAX_CROP_WIDTH || params.h > MAX_CROP_HEIGHT) {
     res
     .status(500)
@@ -23,7 +38,7 @@ function softCrop (req, res) {
   .then((img) => {
     gm(img.path)
     .resize(params.w, params.h, '^')
-    .gravity(req.query.gravity || 'Center')
+    .gravity(gravity)
     .crop(params.w, params.h)
     .stream((err, stdout, stderr) => {
       if (err) return res.status(500).send(err)
