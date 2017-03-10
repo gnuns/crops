@@ -25,9 +25,11 @@ function softCrop (req, res) {
 
   let params = req.params
   let gravity = req.query.gravity || 'Center'
+  let quality = req.query.quality || 100
 
   // int gravity to the matching string value
   if (!isNaN(parseInt(gravity))) gravity = gravityMap[gravity]
+  if (isNaN(parseInt(quality))) quality = 100
   if (params.w > MAX_CROP_WIDTH || params.h > MAX_CROP_HEIGHT) {
     res
     .status(500)
@@ -37,6 +39,7 @@ function softCrop (req, res) {
   downloadImage(params[0])
   .then((img) => {
     gm(img.path)
+    .quality(quality)
     .resize(params.w, params.h, '^')
     .gravity(gravity)
     .crop(params.w, params.h)

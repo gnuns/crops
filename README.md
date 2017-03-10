@@ -32,6 +32,9 @@ You can also set the crop gravity:
 `http://localhost:1337/crop/200/400/blah/awsome/potatoe.jpg?gravity=North` or
 `http://localhost:1337/crop/200/400/blah/awsome/potatoe.jpg?gravity=2`
 
+And quality (1-100):
+`http://localhost:1337/crop/200/400/blah/awsome/potatoe.jpg?quality=70`
+
 
 #### Valid gravity values:
 * 0 / **Center** (default)
