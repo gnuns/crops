@@ -29,19 +29,20 @@ You just have to access
 
 
 You can also set the crop gravity:
-`http://localhost:1337/crop/200/400/blah/awsome/potatoe.jpg?gravity=North`
+`http://localhost:1337/crop/200/400/blah/awsome/potatoe.jpg?gravity=North` or
+`http://localhost:1337/crop/200/400/blah/awsome/potatoe.jpg?gravity=2`
 
 
 #### Valid gravity values:
-* NorthWest
-* North
-* NorthEast
-* West
-* **Center** (default)
-* East
-* SouthWest
-* South
-* SouthEast
+* 0 / **Center** (default)
+* 1 / NorthWest
+* 2 / North
+* 3 / NorthEast
+* 4 / West
+* 5 / East
+* 6 / SouthWest
+* 7 / South
+* 8 / SouthEast
 
 
 ### Live demo
