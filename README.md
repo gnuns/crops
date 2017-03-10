@@ -60,9 +60,9 @@ Address: `https://crops.herokuapp.com/crop/`
 
 `Image: http://68.media.tumblr.com/4e097c1aba3644c09121b28c3fc2d468/tumblr_mgtkitzs2I1qlp8dho1_1280.jpg`
 
-![Square cat](https://crops.herokuapp.com/crop/300/300/68.media.tumblr.com/4e097c1aba3644c09121b28c3fc2d468/tumblr_mgtkitzs2I1qlp8dho1_1280.jpg)
+![Square cat](https://crops.herokuapp.com/crop/300/300/68.media.tumblr.com/4e097c1aba3644c09121b28c3fc2d468/tumblr_mgtkitzs2I1qlp8dho1_1280.jpg?quality=70)
 
-`Image 300x300: https://crops.herokuapp.com/crop/300/300/68.media.tumblr.com/4e097c1aba3644c09121b28c3fc2d468/tumblr_mgtkitzs2I1qlp8dho1_1280.jpg`
+`70% quality 300x300 image: https://crops.herokuapp.com/crop/300/300/68.media.tumblr.com/4e097c1aba3644c09121b28c3fc2d468/tumblr_mgtkitzs2I1qlp8dho1_1280.jpg?quality=70`
 
 ## credits
 inspired by [zooniverse/static-crop](https://github.com/zooniverse/static-crop)
