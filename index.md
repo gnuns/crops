@@ -1,37 +1,68 @@
-## Welcome to GitHub Pages
+# crops
+Simple image crop and resize server
 
-You can use the [editor on GitHub](https://github.com/gnuns/crops/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+### Clone & install dependencies
+```sh
+sudo apt-get install imagemagick graphicsmagick
+git clone git@github.com:gnuns/crops.git
+cd crops/
+npm install
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Usage:
+Set the .env variables:
+```
+PORT=1337
+BASE_SERVER=http://cdn.example.com/
+```
 
-### Jekyll Themes
+Run!
+```
+npm start
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/gnuns/crops/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+To crop the image:
+`http://cdn.example.com/blah/awsome/potatoe.jpg`
 
-### Support or Contact
+You just have to access
+`http://localhost:1337/crop/200/400/blah/awsome/potatoe.jpg`
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+
+You can also set the crop gravity:
+`http://localhost:1337/crop/200/400/blah/awsome/potatoe.jpg?gravity=North` or
+`http://localhost:1337/crop/200/400/blah/awsome/potatoe.jpg?gravity=2`
+
+And quality (1-100):
+`http://localhost:1337/crop/200/400/blah/awsome/potatoe.jpg?quality=70`
+
+
+#### Valid gravity values:
+* 0 / **Center** (default)
+* 1 / NorthWest
+* 2 / North
+* 3 / NorthEast
+* 4 / West
+* 5 / East
+* 6 / SouthWest
+* 7 / South
+* 8 / SouthEast
+
+
+### Live demo
+
+I setup a live demo on heroku  with `BASE_SERVER` param as `http://`, so you can view a cropped version of any image on the web using the URL without http://
+
+Address: `https://crops.herokuapp.com/crop/`
+
+#### Example:
+
+![Original cat](http://68.media.tumblr.com/4e097c1aba3644c09121b28c3fc2d468/tumblr_mgtkitzs2I1qlp8dho1_1280.jpg)
+
+`Image: http://68.media.tumblr.com/4e097c1aba3644c09121b28c3fc2d468/tumblr_mgtkitzs2I1qlp8dho1_1280.jpg`
+
+![Square cat](https://crops.herokuapp.com/crop/300/300/68.media.tumblr.com/4e097c1aba3644c09121b28c3fc2d468/tumblr_mgtkitzs2I1qlp8dho1_1280.jpg?quality=70)
+
+`70% quality 300x300 image: https://crops.herokuapp.com/crop/300/300/68.media.tumblr.com/4e097c1aba3644c09121b28c3fc2d468/tumblr_mgtkitzs2I1qlp8dho1_1280.jpg?quality=70`
+
+## credits
+inspired by [zooniverse/static-crop](https://github.com/zooniverse/static-crop)
