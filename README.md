@@ -37,15 +37,17 @@ And quality (1-100):
 
 
 #### Valid gravity values:
-* 0 / **Center** (default)
-* 1 / NorthWest
-* 2 / North
-* 3 / NorthEast
-* 4 / West
-* 5 / East
-* 6 / SouthWest
-* 7 / South
-* 8 / SouthEast
+| Code  | Name  |
+| --- | --- |
+| 0 | **Center** (default)  |
+| 1 | NorthWest |
+| 2 | North |
+| 3 | NorthEast |
+| 4 | West  |
+| 5 | East  |
+| 6 | SouthWest |
+| 7 | South |
+| 8 | SouthEast |
 
 
 ### Live demo
