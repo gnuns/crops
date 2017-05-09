@@ -1,5 +1,5 @@
-# crops
-Simple image crop and resize server
+# Crops
+Simple thumbnail generation server
 
 ### Clone & install dependencies
 ```sh
