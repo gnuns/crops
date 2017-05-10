@@ -16,7 +16,8 @@ const gravityMap = {
   5: 'East',
   6: 'SouthWest',
   7: 'South',
-  8: 'SouthEast'
+  8: 'SouthEast',
+  10: 'Smart'
 }
 
 module.exports = { crop }
@@ -26,11 +27,9 @@ function crop (req, res, smart) {
 
   let params = req.params
 
-  params.gravity = req.query.gravity || 'Center'
+  params.gravity = req.query.gravity || 'Smart'
   params.quality = req.query.quality || 100
 
-  let img
-  let cropFunction = smart ? smartCrop : simpleCrop
 
   // int gravity to the matching string value
   if (!isNaN(parseInt(params.gravity))) params.gravity = gravityMap[params.gravity]
@@ -40,6 +39,9 @@ function crop (req, res, smart) {
     .status(500)
     .send(`Error! max width: ${MAX_CROP_WIDTH}, max height: ${MAX_CROP_HEIGHT}`)
   }
+
+  let img
+  let cropFunction = params.gravity == 'Smart' ? smartCrop : simpleCrop
 
   downloadImage(params[0])
   .then((_img) => {
