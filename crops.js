@@ -1,7 +1,8 @@
 'use strict'
-const get = require('request').get
+const {get} = require('request')
 const gm = require('gm').subClass({imageMagick: true})
 const fs = require('fs')
+const smartcrop = require('smartcrop-gm')
 
 const MAX_CROP_WIDTH = 2000
 const MAX_CROP_HEIGHT = 2000
@@ -18,18 +19,22 @@ const gravityMap = {
   8: 'SouthEast'
 }
 
-module.exports = { softCrop }
+module.exports = { crop }
 
-function softCrop (req, res) {
+function crop (req, res, smart) {
   res.set('X-Powered-By', 'Crops')
 
   let params = req.params
-  let gravity = req.query.gravity || 'Center'
-  let quality = req.query.quality || 100
+
+  params.gravity = req.query.gravity || 'Center'
+  params.quality = req.query.quality || 100
+
+  let img
+  let cropFunction = smart ? smartCrop : simpleCrop
 
   // int gravity to the matching string value
-  if (!isNaN(parseInt(gravity))) gravity = gravityMap[gravity]
-  if (isNaN(parseInt(quality))) quality = 100
+  if (!isNaN(parseInt(params.gravity))) params.gravity = gravityMap[params.gravity]
+  if (isNaN(parseInt(params.quality))) params.quality = 100
   if (params.w > MAX_CROP_WIDTH || params.h > MAX_CROP_HEIGHT) {
     res
     .status(500)
@@ -37,12 +42,13 @@ function softCrop (req, res) {
   }
 
   downloadImage(params[0])
-  .then((img) => {
-    gm(img.path)
-    .quality(quality)
-    .resize(params.w, params.h, '^')
-    .gravity(gravity)
-    .crop(params.w, params.h)
+  .then((_img) => {
+    img = _img
+    return cropFunction(params, img.path)
+  })
+  .then((_gm) => {
+    _gm
+    .quality(params.quality)
     .stream((err, stdout, stderr) => {
       if (err) return res.status(500).send(err)
       try {
@@ -55,6 +61,33 @@ function softCrop (req, res) {
     })
   })
   .catch((err) => res.status(500).send(`Error! ${err}`))
+}
+
+function smartCrop (params, imgPath) {
+  return new Promise((resolve, reject) => {
+    let img = fs.readFileSync(imgPath)
+    smartcrop
+    .crop(img, {width: params.w, height: params.h})
+    .then(function({topCrop}) {
+      let _gm = gm(imgPath)
+      _gm
+      .crop(topCrop.width, topCrop.height, topCrop.x, topCrop.y)
+      .resize(params.w, params.h)
+      return resolve(_gm)
+    })
+    .catch(reject)
+  })
+}
+
+function simpleCrop (params, imgPath) {
+  return new Promise((resolve, reject) => {
+    let _gm = gm(imgPath)
+    _gm
+    .resize(params.w, params.h, '^')
+    .gravity(params.gravity)
+    .crop(params.w, params.h)
+    return resolve(_gm)
+  })
 }
 
 function downloadImage (path) {
