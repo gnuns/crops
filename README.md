@@ -50,7 +50,7 @@ By default, Crops use quality = 100 and [smartcrop](https://github.com/jwagner/s
 | 6 | SouthWest |
 | 7 | South |
 | 8 | SouthEast |
-| 10 | **Smart**  (default) |
+| 9 | **Smart**  (default) |
 
 
 ### Live demo

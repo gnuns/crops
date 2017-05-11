@@ -17,7 +17,7 @@ const gravityMap = {
   6: 'SouthWest',
   7: 'South',
   8: 'SouthEast',
-  10: 'Smart'
+  9: 'Smart'
 }
 
 module.exports = { crop }
