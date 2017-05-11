@@ -35,11 +35,13 @@ You can also set the crop gravity:
 And quality (1-100):
 `http://localhost:1337/crop/200/400/blah/awsome/potatoe.jpg?quality=70`
 
+By default, Crops use quality = 100 and [smartcrop](https://github.com/jwagner/smartcrop.js) to define the best gravity
+
 
 #### Valid gravity values:
 | Code  | Name  |
 | --- | --- |
-| 0 | **Center** (default)  |
+| 0 | Center |
 | 1 | NorthWest |
 | 2 | North |
 | 3 | NorthEast |
@@ -48,6 +50,7 @@ And quality (1-100):
 | 6 | SouthWest |
 | 7 | South |
 | 8 | SouthEast |
+| 10 | **Smart**  (default) |
 
 
 ### Live demo
