@@ -71,3 +71,5 @@ Address: `https://crops.herokuapp.com/crop/`
 
 ## credits
 inspired by [zooniverse/static-crop](https://github.com/zooniverse/static-crop)
+
+[![forthebadge](http://forthebadge.com/images/badges/contains-cat-gifs.svg)](http://forthebadge.com)
